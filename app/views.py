@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView
 from .models import Book, OrderItem, Order, Author, Publisher, Warehouse
+from django.db import models
 
 from django.contrib.auth import (
     authenticate, 
@@ -54,6 +55,18 @@ def register_view(request):
 class HomeView(ListView):
 	model = Book
 	template_name = "home.html"
+	
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+        
+		allBooks = Book.objects.all()
+		authors_to_book_dict = []
+		for book in allBooks:
+			authors_to_book_dict.append(book.author.get())
+        
+		context['author_to_book'] = authors_to_book_dict
+
+		return context
 
 def search(request):
     now = datetime.now()

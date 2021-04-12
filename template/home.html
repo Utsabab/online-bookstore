@@ -6,6 +6,12 @@
   <main>
     <div class="container">
 
+      {% for key in author_to_book %}
+          <li class="nav-item">
+            <a class="nav-link">{{ key }} -  </a>
+          </li>
+      {% endfor %}
+
       <!--Navbar-->
       <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
 
@@ -20,7 +26,7 @@
 
         <!-- Collapsible content -->
         <div class="collapse navbar-collapse" id="basicExampleNav">
-
+          
           <!-- Links -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
