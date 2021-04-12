@@ -7,8 +7,8 @@ from .views import (
 	HomeView, 
 	# add_to_cart, 
 	# remove_from_cart,
-	# search, 
-	# search_and_show, 
+	search, 
+	search_and_show, 
 	# OrderSummaryView
 )
 
@@ -17,4 +17,5 @@ app_name = 'app'
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     path("search/", views.search, name="search"),
+    path('search_results/', search_and_show, name='search_and_show_register'),
 ]
