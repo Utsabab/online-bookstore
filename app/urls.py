@@ -1,5 +1,4 @@
-from django.urls import path 
-from app import views 
+from django.urls import path  
 
 from .views import ( 
 	# ItemDetailView, 
@@ -16,6 +15,6 @@ app_name = 'app'
 
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
-    path("search/", views.search, name="search"),
+    path("search/", search, name="search"),
     path('search_results/', search_and_show, name='search_and_show_register'),
 ]

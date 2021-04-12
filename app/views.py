@@ -1,17 +1,18 @@
-import re
 from django.utils.timezone import datetime
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView
+from django.contrib import messages
 from .models import Book, OrderItem, Order, Author, Publisher, Warehouse
-from django.db import models
+from django.contrib.auth.hashers import make_password
 
 from django.contrib.auth import (
     authenticate, 
     get_user_model, 
     login, 
-    logout)
+    logout
+)
 
 from app.forms import UserLoginForm, UserRegisterForm, SearchForm
 
@@ -22,7 +23,9 @@ def login_view(request):
 	if form.is_valid():
 		username = form.cleaned_data.get('username')
 		password = form.cleaned_data.get('password')
+		password = make_password(form.cleaned_data.get('password'))
 		user = authenticate(username=username, password=password)
+		
 		login(request, user)
 		if next:
 			return redirect(next)
@@ -39,6 +42,7 @@ def register_view(request):
 	if form.is_valid():
 		user = form.save(request)
 		password = form.cleaned_data.get('password')
+		password = make_password(form.cleaned_data.get('password'))
 		user.set_password(password)
 		user.save()
 		new_user = authenticate(username=user.username, password=password)
@@ -51,6 +55,10 @@ def register_view(request):
 		'form': form, 
 	}
 	return render(request, "signup.html", context)
+
+def logout_view(request):
+	logout(request)
+	return redirect('/')
 
 class HomeView(ListView):
 	model = Book

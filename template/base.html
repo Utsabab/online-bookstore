@@ -97,9 +97,15 @@
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="accounts/logout/">
+              <span class="clearfix d-none d-sm-inline-block"> Logout </span>
+            </a>
+          </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'login_view' %}">
+            <a class="nav-link waves-effect" href="accounts/login">
               <span class="clearfix d-none d-sm-inline-block"> Login </span>
             </a>
           </li>
