@@ -96,16 +96,18 @@ def search(request):
 		val = e.ISBN
 		isbn = "".join(val.split("-"))
 		pub_val = e.publisher.name.lower()
+		pub_val = pub_val.split()
 		
 		if isbn not in isbn_list:
 			isbn_list[isbn] = e.ISBN
-		if pub_val not in pub_list:
-			pub_list[pub_val] = e.publisher.name
+		if pub_val[0] not in pub_list:
+			pub_list[pub_val[0]] = e.publisher.name
 
 	query = request.GET.get("query")
 	val = query.strip()
 	queries = val.split(" ") 
 	vals = [q.lower() for q in queries]
+	
 	for q in vals:
 		if q in authors_list: 
 			first, last = authors_list[q]
