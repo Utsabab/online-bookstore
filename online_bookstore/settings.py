@@ -144,5 +144,4 @@ SITE_ID = 1
 ACCOUNT_FORMS = {
 'signup': 'app.forms.UserRegisterForm',
 'login': 'app.forms.UserLoginForm'
-# 'login': 'allauth.account.forms.LoginForm'
 }

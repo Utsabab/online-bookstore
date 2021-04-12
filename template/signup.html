@@ -8,14 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
+ 
 <body>
 	<h1>
 		Signup
 	</h1>
 	<form method="POST">
 		{% csrf_token %}
-		{{ form }}
+		{{ form.as_p }}
 		<input type="submit" />
 	</form>
 </body>

@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import (authenticate, get_user_model )
 from .models import Author
 from allauth.account.forms import SignupForm, LoginForm
+from django.contrib.auth.forms import UserCreationForm
 
 
 User = get_user_model()
@@ -26,6 +27,7 @@ class UserLoginForm(LoginForm):
 		return super(UserLoginForm, self).clean(*args, **kwargs)
 
 class UserRegisterForm(SignupForm):
+	# email = forms.EmailField(label='Email')
 	email2 = forms.EmailField(label='Confirm email')
 
 	# class Meta:
