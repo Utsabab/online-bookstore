@@ -3,6 +3,8 @@ from django.utils.timezone import datetime
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView, DetailView
+from .models import Book, OrderItem, Order, Author, Publisher, Warehouse
 
 from django.contrib.auth import (
     authenticate, 
@@ -49,8 +51,9 @@ def register_view(request):
 	}
 	return render(request, "signup.html", context)
 
-def home(request):
-    return render(request, "home.html")
+class HomeView(ListView):
+	model = Book
+	template_name = "home.html"
 
 def search(request):
     now = datetime.now()
