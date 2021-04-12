@@ -21,9 +21,8 @@ def login_view(request):
 	next = request.GET.get('next')
 	form = UserLoginForm(request.POST or None)
 	if form.is_valid():
-		username = form.cleaned_data.get('username')
+		username = form.cleaned_data.get('login')
 		password = form.cleaned_data.get('password')
-		password = make_password(form.cleaned_data.get('password'))
 		user = authenticate(username=username, password=password)
 		
 		login(request, user)

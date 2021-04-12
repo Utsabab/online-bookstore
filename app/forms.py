@@ -10,6 +10,7 @@ class UserLoginForm(LoginForm):
 	# password = forms.CharField(widget=forms.PasswordInput)
 
 	def clean(self, *args, **kwargs):
+		# cleaned_data = self.clean()
 		username = self.cleaned_data.get('login')
 		password = self.cleaned_data.get('password')
 
