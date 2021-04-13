@@ -13,7 +13,7 @@ Here are some instructions to clone this project and run it.
 - python manage.py migrate
 - python manage.py runserver
 
-Follow the link for the local host.
+Follow the link for the local host http://127.0.0.1:8000/.
 
 Create a superuser using the command python manage.py createsuperuser
 Now you can log in via http://127.0.0.1:8000/admin page through which you can see the table created. You can modify them using the interface of superuser/admin
