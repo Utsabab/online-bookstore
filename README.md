@@ -6,12 +6,12 @@ In order to create an ecommerce website for online book sale, I used the Django 
 
 Here are some instructions to clone this project and run it.
 
--git clone this project.
--Activate the virtual environment using source bin/activate command in the working directory.
--Install Django using "python -m pip install Django" command.
--python manage.py makemigrations. It will follow some instructions to fill up some fields in the database to avoid IntegrityError.
--python manage.py migrate
--python manage.py runserver
+- git clone this project.
+- Activate the virtual environment using source bin/activate command in the working directory.
+- Install Django using "python -m pip install Django" command.
+- python manage.py makemigrations. It will follow some instructions to fill up some fields in the database to avoid IntegrityError.
+- python manage.py migrate
+- python manage.py runserver
 
 Follow the link for the local host.
 
