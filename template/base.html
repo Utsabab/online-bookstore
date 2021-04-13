@@ -76,13 +76,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="checkout/">Checkout</a>
+            <a class="nav-link waves-effect" href={% url 'app:checkout' %}>Checkout</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link waves-effect" href="product">Product</a>
           </li> -->
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="" target="_blank">About</a>
+            <a class="nav-link waves-effect" href="/">About</a>
           </li>
 
           
@@ -92,7 +92,8 @@
         <ul class="navbar-nav nav-flex-icons">
           {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link waves-effect">
+            <a  class="nav-link waves-effect">
+
               <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>
             </a>

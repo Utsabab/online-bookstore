@@ -2,7 +2,7 @@ from django.utils.timezone import datetime
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, View
 from django.contrib import messages
 from .models import Book, OrderItem, Order, Author, Publisher, Warehouse
 from django.contrib.auth.hashers import make_password
@@ -124,7 +124,7 @@ def remove_from_cart(request, slug):
 		order = order_qs[0]
 		if order.items.filter(item__slug=item.slug).exists():
 			order_item = OrderItem.objects.filter(item=item, user=request.user, ordered=False)[0]
-			if order_item.quantity > 1:
+			if order_item.quantity >= 1:
 				stock.quantity += 1
 				order_item.quantity -= 1
 				order_item.save()
@@ -224,21 +224,3 @@ def search(request):
 		else: 
 			context = {}
 	return render(request, "book_list.html", context)
-
-
-
-def search_and_show(request, slug):
-	form = SearchForm(request.POST or None)
-	if form.is_valid():
-		first = form.cleaned_data.get('firstname')
-		last = "Mayer"
-		author = get_object_or_404(Author, firstname=first, lastname=last)
-		book = Book.objects.filter(author=author)
-		if True:
-			context = {
-				'books': [book]
-			}
-			return render(request, "book_list.html", context)
-		else: 
-			return redirect("app:home", slug=slug)
-	return render(request, "book_list.html")
