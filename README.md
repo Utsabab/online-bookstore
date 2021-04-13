@@ -2,7 +2,7 @@ Problem Statement
 
 You are asked to develop an e-commerce website for online book sale. It should provide the users with a catalog of different books available for purchase in the bookstore. A shopping cart should be provided to the users. The system should be implemented using a 3-tier approach.
 
-In order to create an ecommerce website for online book sale, I used the Django framework (Python 3) to write the backend of the website.
+In order to create an ecommerce website for online book sale, I have used the Django framework (Python 3) as the application server of the website. Similarly, PostgreSQL is implemented as the database. Bootstrap and jinja template engine are used as the front end framework.
 
 Here are some instructions to clone this project and run it.
 
