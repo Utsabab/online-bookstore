@@ -80,7 +80,8 @@ class ItemDetailView(DetailView):
 	model = Book
 	template_name = "product-page.html"
 
-	
+def checkout(request):
+	return render(request, "checkout-page.html")	
 
 def product(request):
 	 context = {
@@ -239,5 +240,5 @@ def search_and_show(request, slug):
 			}
 			return render(request, "book_list.html", context)
 		else: 
-			return redirect("bookstore:home", slug=slug)
+			return redirect("app:home", slug=slug)
 	return render(request, "book_list.html")
